@@ -1,6 +1,11 @@
 angular.module('app')
 .component('search', {
-  controller: function() {},
+  controller: function() {
+    this.handleClick = function() {
+      
+    }
+    
+  },
   bindings: {},
   templateUrl: '/templates/search.html'
 });

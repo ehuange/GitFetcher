@@ -1,2 +1,4 @@
 angular.module('app')
-.service('github', function() {});
+.service('github', function(terms) {
+    
+});

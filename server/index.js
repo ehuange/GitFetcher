@@ -10,10 +10,12 @@ app.use(express.static(__dirname + '/../node_modules/angular'));
 
 
 app.post('/repos', function (req, res) {
+  console.log('function ran');
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
+  res.send(`Repos for ${req.body} saved!`)
 });
 
 app.get('/repos', function (req, res) {
