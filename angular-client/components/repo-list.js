@@ -3,6 +3,7 @@ angular.module('app')
   controller: function() {},
   bindings: {
     repos: '<',
+
   },
   templateUrl: '/templates/repo-list.html'
 });

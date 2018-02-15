@@ -1,5 +1,7 @@
 <div>
   <h4>Add more repos!</h4>
   Enter a github username: <input ng-model="$ctrl.terms" />       
-  <button ng-click="$ctrl.handleClick()"> Add Repos </button>
+  <button ng-click="$ctrl.service($ctrl.terms)"> Add Repos </button>
+  <button ng-click="$ctrl.reload()"> Reload Repos </button>
+  <pre>{{$ctrl.terms}}</pre>
 </div>

@@ -1,4 +1,9 @@
 <div>
   <h4> Repo List Component </h4>
   There are {{$ctrl.repos.length}} repos.
+  <div ng-repeat="repo in $ctrl.repos">
+    <div>{{repo.name}}</div>
+  </div>
+
+  
 </div>
