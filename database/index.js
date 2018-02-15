@@ -3,19 +3,21 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
-  name: String,
-  owner: String, //owner.login
-  url: String, //owner.html_url
-  forks: Number,
-  stars: Number //just in case forks is not a good sorting method
+  name: {String, required: true},
+  login: {String, required: true}, //owner.login
+  url: {String, required: true}, //owner.html_url
+  forks: {Number, required: true},
+  stars: {Number, required: true} //just in case forks is not a good sorting method
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (err) => {
-  if (err) {
-    console.log(err);
-    return;
+let save = () => {
+  Repo.save((err) => {
+    if (err) {
+      return handleError(err);
+    }
+    console.log('saved!');
   }
   //should be saved otherwise
   // TODO: Your code here

@@ -1,21 +1,34 @@
+import { getReposByUsername } from '../helpers/github';
+
+const getRepos = require('../helpers/github');
+
+
 const express = require('express');
+const bodyParser = require('body-parser')
+const $ = require('jquery');
+
 let app = express();
 
 // UNCOMMENT FOR ANGULARJS
 app.use(express.static(__dirname + '/../angular-client'));
 app.use(express.static(__dirname + '/../node_modules/angular'));
-
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 // UNCOMMENT FOR REACT
 // app.use(express.static(__dirname + '/../react-client/dist'));
 
 
 app.post('/repos', function (req, res) {
-  console.log('function ran');
+  var input = req.body.query;
+  getReposByUsername(input);
+  
+  
+  
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
-  res.send(`Repos for ${req.body} saved!`)
+  res.send('posted');
 });
 
 app.get('/repos', function (req, res) {
