@@ -2,7 +2,21 @@
   <h4> Repo List Component </h4>
   There are {{$ctrl.repos.length}} repos.
   <div ng-repeat="repo in $ctrl.repos">
-    <div>{{repo.name}}</div>
+    <table>
+      <tr>
+        <th>Repo Name</th>
+        <th>Repo Creator</th>
+        <th>URL</th>
+        <th>Forks</th>
+      </tr>
+      <tr>
+        <td>{{repo.name}}</td>
+        <td>{{repo.login}}</td>
+        <td ><a ng-href="{{repo.url}}">{{repo.url}}</a></td>
+        <td>{{repo.forks}}</td>
+      </tr>
+    </table>
+    
   </div>
 
   

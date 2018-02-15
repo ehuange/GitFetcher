@@ -2,6 +2,9 @@ angular.module('app')
 .component('app', {
   controller: function($http, github) {
     this.repos = [];
+    this.$onInit = () => {
+      this.reload();
+    }
     let ctrl = this;
     this.searchService = (input) => {
       $http.post('/repos', {query: input}).then(function(success) {
