@@ -1,17 +1,22 @@
-angular.module('app')
-.component('app', {
+angular.module("app").component("app", {
   controller: function($http, github) {
     this.repos = [];
     this.$onInit = () => {
       this.reload();
-    }
+    };
     let ctrl = this;
-    this.searchService = (input) => {
-      $http.post('/repos', {query: input}).then(function(success) {
-        console.log(`Fetching repos`);
-      }, function(error) {
-        console.log(error);
-      })
+    this.searchService = input => {
+      $http
+        .post("/repos", { query: input })
+        .then(
+          function(success) {
+            console.log(`Fetching repos`);
+          },
+          function(error) {
+            console.log(error);
+          }
+        )
+        .then(ctrl.reload());
     };
 
     this.reload = () => {
@@ -19,11 +24,10 @@ angular.module('app')
         console.log(data);
         ctrl.repos = data.data;
       });
-    }
-    
+    };
   },
   bindings: {
-    service: '<',
+    service: "<"
   },
-  templateUrl: '/templates/app.html'
+  templateUrl: "/templates/app.html"
 });
