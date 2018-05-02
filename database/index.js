@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/fetcher");
 
-let repoSchema = mongoose.Schema({
+const repoSchema = mongoose.Schema({
   // TODO: your schema here!
   id: { type: Number, unique: true },
   name: { type: String, required: true },
@@ -11,9 +11,9 @@ let repoSchema = mongoose.Schema({
   stars: { type: Number, required: true } //just in case forks is not a good sorting method
 });
 
-let Repo = mongoose.model("Repo", repoSchema);
+const Repo = mongoose.model("Repo", repoSchema);
 
-let save = (array, callback) => {
+const save = (array, callback) => {
   let data = array.map(function(item) {
     return {
       id: item.id,
@@ -30,27 +30,9 @@ let save = (array, callback) => {
     }
     callback(null, result);
   });
-  // array.forEach(function(repo) {
-  //   Repo.create(
-  //     {
-  //       id: repo.id,
-  //       name: repo.name,
-  //       login: repo.owner.login,
-  //       url: repo.html_url,
-  //       forks: repo.forks,
-  //       stars: repo.stargazers_count
-  //     },
-  //     function(err, anything) {
-  //       if (err) {
-  //         console.log(err);
-  //         return;
-  //       }
-  //     }
-  //   );
-  // });
 };
 
-let find = callback => {
+const find = callback => {
   Repo.find()
     .limit(25)
     .sort("-forks")
