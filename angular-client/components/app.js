@@ -4,7 +4,9 @@ angular.module("app").component("app", {
     this.$onInit = () => {
       this.reload();
     };
+    
     let ctrl = this;
+    
     this.searchService = input => {
       $http
         .post("/repos", { query: input })
@@ -26,8 +28,10 @@ angular.module("app").component("app", {
       });
     };
   },
+  
   bindings: {
     service: "<"
   },
+  
   templateUrl: "/templates/app.html"
 });
