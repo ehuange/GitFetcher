@@ -5,7 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const $ = require("jquery");
 const morgan = require("morgan");
-let app = express();
+const app = express();
 
 app.use(express.static(__dirname + "/../angular-client"));
 app.use(express.static(__dirname + "/../node_modules/angular"));
@@ -15,13 +15,13 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 app.post("/repos", function(req, res) {
-  var input = req.body.query;
+  const input = req.body.query;
   getRepos.getReposByUsername(input, function(error, result) {
     if (error) {
       console.log(error);
       return;
     } else {
-      var data = JSON.parse(result.body);
+      const data = JSON.parse(result.body);
       save(data, function(error, results) {
         if (error) {
           console.log(error);
@@ -38,7 +38,7 @@ app.get("/repos", function(req, res) {
   });
 });
 
-let port = 1128;
+const port = 1128;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
